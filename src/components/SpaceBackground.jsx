@@ -3,7 +3,8 @@
 import React from "react";
 import Particles from "@tsparticles/react";
 import SpaceThemeConfig from "../configs/spaceThemeConfig";
-import useParticleEngine from "../hooks/useParticleEngine";
+import useParticleEngine from "@/hooks/useParticleEngine";
+
 
 /*
  * SpaceBackground renders an animated space background using tsParticles.

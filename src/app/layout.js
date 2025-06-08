@@ -1,4 +1,4 @@
-import SpaceBackground from "./components/SpaceBackground";
+import SpaceBackground from "../components/SpaceBackground";
 
 export default function RootLayout({ children }) {
   return (
