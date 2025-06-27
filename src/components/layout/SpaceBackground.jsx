@@ -2,7 +2,7 @@
 
 import React from "react";
 import dynamic from "next/dynamic";
-import SpaceThemeConfig from "@/configs/spaceThemeConfig";
+import SpaceThemeConfig from "@/data/spaceThemeConfig";
 import useParticleEngine from "@/hooks/useParticleEngine";
 
 const Particles = dynamic(() => import("@tsparticles/react"), { ssr: false });

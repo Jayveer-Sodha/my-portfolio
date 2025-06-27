@@ -1,4 +1,4 @@
-import { NAV_LINKS } from "@/configs/linksData";
+import { NAV_LINKS } from "@/data/linksData";
 import NavLink from "../../ui/NavLink";
 
 const NavLinks = ({ mobile = false, setMenuOpen }) =>

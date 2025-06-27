@@ -1,5 +1,5 @@
 import Skill from "./Skill";
-import SKILLS_IMAGES from "@/configs/skillsData";
+import SKILLS_IMAGES from "@/data/skillsData";
 
 const Skills = () => {
   return (
