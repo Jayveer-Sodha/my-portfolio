@@ -1,25 +1,18 @@
-const HomePage = () => {
+import Container from "@/components/ui/Container";
+import HeroSection from "@/sections/hero/HeroSection";
+import SkillsSections from "@/sections/skills/SkillsSections";
+import ProjectsSections from "@/sections/projects/ProjectsSection";
+import ContactSection from "@/sections/contact/ContactSection";
+
+const App = () => {
   return (
-    <div style={{ position: "relative", height: "100vh", overflow: "hidden" }}>
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 10,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#fff",
-          fontSize: "2rem",
-        }}
-      >
-        <h1>Welcome to My Portfolio</h1>
-      </div>
-    </div>
+    <Container className="relative text-white min-h-screen flex flex-col justify-center items-center pt-60 lg:pt-20">
+      <HeroSection />
+      <SkillsSections />
+      <ProjectsSections />
+      <ContactSection />
+    </Container>
   );
 };
 
-export default HomePage;
+export default App;
