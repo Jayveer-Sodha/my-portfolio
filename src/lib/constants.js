@@ -15,3 +15,11 @@ export const SECTION_SUB_TITLE_CLASSNAME =
 
 export const SECTION_PTAG_CLASSNAME =
   "text-lg text-gray-400 lg:text-2xl text-center mx-auto lg:text-xl text-center mt-4";
+
+export const TOKEN_URL = "https://bitbucket.org/site/oauth2/access_token";
+
+export const REDIRECT_URI = process.env.REDIRECT_URI;
+
+export const BASIC_AUTH = `Basic ${Buffer.from(
+  `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
+).toString("base64")}`;

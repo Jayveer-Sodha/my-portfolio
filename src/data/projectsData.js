@@ -1,11 +1,11 @@
 const PROJECTS = [
   {
-    title: "Portfolio Website",
+    title: "Virgin Voyages",
     description:
-      "A sleek portfolio built with Next.js, Tailwind CSS, and Framer Motion.",
-    image: "/images/projectImage.webp",
+      "The app delivers a seamless cruise experience by allowing users to book voyages, explore onboard activities, manage itineraries, and access real-time ship and account information.",
+    image: "/images/sailorApp.png",
     link: "https://jayveer-portfolio.com",
-    tech: ["Next.js", "Tailwind", "Framer Motion"],
+    tech: ["React.js", "Node.js", "JavaScript", "Kibana", "Dynatrace", "SCSS"],
   },
   {
     title: "E-Commerce Store",
