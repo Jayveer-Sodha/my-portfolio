@@ -9,6 +9,7 @@ const NavLinks = ({ mobile = false, setMenuOpen }) =>
       label={label}
       mobile={mobile}
       setMenuOpen={setMenuOpen}
+      className="w-full border-b border-white/10 lg:border-0 last:border-b-0 pb-2"
     />
   ));
 

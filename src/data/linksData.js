@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { href: "/#skills", label: "Skills" },
   { href: "/#projects", label: "Projects" },
   { href: "/#contacts", label: "Contact" },
+  { href: "/features", label: "Features" },
 ];
 
 const SOCIAL_LINKS = [

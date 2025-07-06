@@ -1,60 +1,80 @@
 "use client";
 
-import clsx from "clsx";
-import { useState } from "react";
 import NavLinks from "./NavLinks";
 import Logo from "@/components/ui/Logo";
+import { useState, useRef } from "react";
 import NavMenuButton from "./NavMenuButton";
 import NavLink from "@/components/ui/NavLink";
+import useLockScroll from "@/hooks/useLockScroll";
+import useClickOutside from "@/hooks/useClickOutside";
+import { motion, AnimatePresence } from "framer-motion";
+
+const NAV_HEIGHT_CLOSED = 65;
+const NAV_HEIGHT_OPEN = 300;
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef(null);
+
+  useClickOutside(navRef, () => setMenuOpen(false), menuOpen);
+  useLockScroll(menuOpen);
 
   return (
-    <header className="flex fixed top-0 w-full z-50 text-white bg-[#3b066d8c] border-b border-white/10 backdrop-blur-xl shadow-lg shadow-violet-500/20 px-3 h-[50px] lg:h-[65px] transition-all duration-500 ease-in-out">
-      {/* Logo + Title */}
-      <div
-        className={clsx(
-          "mr-auto flex justify-center items-center gap-3 transition-all duration-500 ease-in-out transform",
-          menuOpen
-            ? "-translate-y-8 opacity-0 pointer-events-none"
-            : "translate-y-0 opacity-100 pointer-events-auto"
+    <>
+      {/* Outside dark overlay */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            key="overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.8 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-black z-40"
+            onClick={() => setMenuOpen(false)}
+          />
         )}
+      </AnimatePresence>
+
+      {/* Navbar*/}
+      <motion.header
+        ref={navRef}
+        animate={{ height: menuOpen ? NAV_HEIGHT_OPEN : NAV_HEIGHT_CLOSED }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="fixed top-0 w-full z-50 overflow-hidden bg-[#3b066d8c] text-white border-b border-white/10 backdrop-blur-xl shadow-lg shadow-violet-500/20"
       >
-        <Logo />
-        <NavLink
-          key="/"
-          href="/"
-          label="Jayveer Sodha"
-          className="!uppercase"
-        />
-      </div>
+        {/* Top Row */}
+        <div className="flex items-center justify-between px-4 h-[65px]">
+          <div className="flex items-center gap-3">
+            <Logo />
+            <NavLink href="/" label="Jayveer Sodha" className="!uppercase" />
+          </div>
 
-      {/* Desktop Nav Links */}
-      <div className="mx-auto hidden lg:flex justify-evenly items-center gap-10 w-fit">
-        <NavLinks />
-      </div>
+          <div className="hidden lg:flex items-center gap-10">
+            <NavLinks />
+          </div>
 
-      {/* Mobile Nav Links */}
-      <div
-        className={clsx(
-          "absolute top-full right-8 w-full px-15 pt-4 pb-6",
-          "lg:hidden flex justify-evenly items-center gap-3 h-full",
-          "transition-all duration-500 ease-in-out transform",
-          menuOpen
-            ? "translate-y-[-45px] opacity-100 pointer-events-auto"
-            : "translate-y-[-15px] opacity-0 pointer-events-none"
-        )}
-      >
-        <NavLinks setMenuOpen={setMenuOpen} mobile />
-      </div>
+          <div className="lg:hidden">
+            <NavMenuButton setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
+          </div>
+        </div>
 
-      {/* Menu Button */}
-      <div className="ml-auto flex justify-center items-center gap-3 mr-4">
-        {/* Menu Toggle */}
-        <NavMenuButton setMenuOpen={setMenuOpen} menuOpen={menuOpen} />
-      </div>
-    </header>
+        {/* Mobile Nav Links */}
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.ul
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="flex flex-col justify-center items-center gap-2 px-6 pt-4 text-center"
+            >
+              {<NavLinks setMenuOpen={setMenuOpen} mobile={menuOpen} />}
+            </motion.ul>
+          )}
+        </AnimatePresence>
+      </motion.header>
+    </>
   );
 };
 
