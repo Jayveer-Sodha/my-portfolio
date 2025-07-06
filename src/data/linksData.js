@@ -3,7 +3,7 @@ import { HOVER_SCALE_ANIMATION_CLASSNAME } from "@/lib/constants";
 const WHATSAPP_LINK = "https://wa.me/917016282912";
 
 const NAV_LINKS = [
-  { href: "/#aboutMe", label: "About Me" },
+  { href: "/#aboutMe", label: "About" },
   { href: "/#skills", label: "Skills" },
   { href: "/#projects", label: "Projects" },
   { href: "/#contacts", label: "Contact" },
