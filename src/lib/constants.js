@@ -23,3 +23,5 @@ export const REDIRECT_URI = process.env.REDIRECT_URI;
 export const BASIC_AUTH = `Basic ${Buffer.from(
   `${process.env.CLIENT_ID}:${process.env.CLIENT_SECRET}`
 ).toString("base64")}`;
+
+export const BLACKHOLE_ALLOWED_ROUTES = ["/"];

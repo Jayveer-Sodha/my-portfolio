@@ -6,6 +6,7 @@ const HeroImage = () => {
       <Image
         width={500}
         height={500}
+        priority={false}
         src="/images/hero-bg.svg"
         alt="Developer illustration"
         className="w-full max-w-md lg:max-w-lg mx-auto"

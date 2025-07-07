@@ -14,11 +14,11 @@ const NAV_HEIGHT_OPEN = 300;
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeNav, setActiveNav] = useState(null);
   const navRef = useRef(null);
 
   useClickOutside(navRef, () => setMenuOpen(false), menuOpen);
   useLockScroll(menuOpen);
-
   return (
     <>
       {/* Outside dark overlay */}
@@ -51,7 +51,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-10">
-            <NavLinks />
+            <NavLinks activeNav={activeNav} setActiveNav={setActiveNav} />
           </div>
 
           <div className="lg:hidden">
@@ -69,7 +69,12 @@ const Navbar = () => {
               transition={{ duration: 0.4, ease: "easeInOut" }}
               className="flex flex-col justify-center items-center gap-2 px-6 pt-4 text-center"
             >
-              {<NavLinks setMenuOpen={setMenuOpen} mobile={menuOpen} />}
+              <NavLinks
+                activeNav={activeNav}
+                setActiveNav={setActiveNav}
+                setMenuOpen={setMenuOpen}
+                mobile={menuOpen}
+              />
             </motion.ul>
           )}
         </AnimatePresence>
