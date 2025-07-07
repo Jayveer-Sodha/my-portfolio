@@ -7,7 +7,7 @@ const Footer = () => {
       <span className="hidden lg:inline text-base mx-2 text-gray-500">
         {FOOTER_CONTENT.SEPARATOR}
       </span>
-      <span className="text-white">{FOOTER_CONTENT.AVAILABILITY}</span>
+      {/* <span className="text-white">{FOOTER_CONTENT.AVAILABILITY}</span> */}
     </footer>
   );
 };
