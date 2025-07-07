@@ -2,10 +2,11 @@
 
 import NavLinks from "./NavLinks";
 import Logo from "@/components/ui/Logo";
-import { useState, useRef } from "react";
 import NavMenuButton from "./NavMenuButton";
+import { usePathname } from "next/navigation";
 import NavLink from "@/components/ui/NavLink";
 import useLockScroll from "@/hooks/useLockScroll";
+import { useState, useRef, useEffect } from "react";
 import useClickOutside from "@/hooks/useClickOutside";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -16,6 +17,17 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeNav, setActiveNav] = useState(null);
   const navRef = useRef(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (!activeNav && pathname) {
+      setActiveNav(pathname);
+    }
+  }, []);
+
+  const resetActiveNav = () => {
+    setActiveNav(null);
+  };
 
   useClickOutside(navRef, () => setMenuOpen(false), menuOpen);
   useLockScroll(menuOpen);
@@ -46,8 +58,13 @@ const Navbar = () => {
         {/* Top Row */}
         <div className="flex items-center justify-between px-4 h-[65px]">
           <div className="flex items-center gap-3">
-            <Logo />
-            <NavLink href="/" label="Jayveer Sodha" className="!uppercase" />
+            <Logo handleClick={resetActiveNav} />
+            <NavLink
+              handleClick={resetActiveNav}
+              href="/"
+              label="Jayveer Sodha"
+              className="!uppercase"
+            />
           </div>
 
           <div className="hidden lg:flex items-center gap-10">

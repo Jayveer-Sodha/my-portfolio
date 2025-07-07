@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { HOVER_SCALE_ANIMATION_CLASSNAME } from "@/lib/constants";
 
-const Logo = () => {
+const Logo = ({ handleClick }) => {
   return (
-    <Link href="/">
+    <Link href="/" onClick={handleClick}>
       <Image
         src="/images/pandaDev.png"
         alt="Jayveer Logo"
